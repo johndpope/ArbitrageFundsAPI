@@ -1,2 +1,5 @@
 meld3==1.0.2
 gunicorn==19.9.0
+Django==2.0.10
+pandas==0.23.0
+sqlparse==0.2.4
