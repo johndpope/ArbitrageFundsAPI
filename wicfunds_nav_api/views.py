@@ -47,6 +47,14 @@ def get_performances_general(url):
             key = ' '.join(info.split(' ')[0:2])
             information_array[key] = ' '.join(info.split(' ')[2:])
 
+    json_response = {}
+    if '3 YR' in daily_performance.columns.values:
+        json_response['label_one'] = '3 YR'
+        json_response['label_two'] = '5 YR'
+    else:
+        json_response['label_one'] = '5 YR'
+        json_response['label_two'] = '10 YR'
+    
     # Change column names
     daily_performance.columns = ['ticker', 'class', 'min_investment', 'gross_expense_ratio', 'net_expense_ratio',
                                  'tickerx', 'daily_nav', 'daily_change_dollar', 'daily_change_percentage',
@@ -60,7 +68,7 @@ def get_performances_general(url):
     del daily_performance['tickerzzz']
 
     daily_performance = daily_performance.iloc[0:4]
-    json_response = {}
+    
     classes = daily_performance['class'].unique()
 
     for share_class in classes:
