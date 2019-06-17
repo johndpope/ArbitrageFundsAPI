@@ -11,13 +11,13 @@ def index(request):
 def get_taq_performance(request):
     performance_url = "https://arbitragefunds.s3.amazonaws.com/performance/TAQ_Performance.CSV"
     json_response = get_performances_general(performance_url)
-    return HttpResponse(json_response)
+    return JsonResponse([json_response], safe=False)
 
 @csrf_exempt
 def get_arb_performance(request):
     arb_performance_url = "https://arbitragefunds.s3.amazonaws.com/performance/ARB_Performance.CSV"
     json_response = get_performances_general(arb_performance_url)
-    return HttpResponse(json_response)
+    return JsonResponse([json_response], safe=False)
 
 @csrf_exempt
 def get_aed_performance(request):
@@ -29,7 +29,7 @@ def get_aed_performance(request):
 def get_taco_performance(request):
     performance_url = "https://arbitragefunds.s3.amazonaws.com/performance/TACO_Performance.CSV"
     json_response = get_performances_general(performance_url)
-    return HttpResponse(json_response)
+    return JsonResponse([json_response], safe=False)
 
 @csrf_exempt
 def get_performances_general(url):
