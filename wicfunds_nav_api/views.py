@@ -48,12 +48,12 @@ def get_performances_general(url):
             information_array[key] = ' '.join(info.split(' ')[2:])
 
     json_response = {}
-    if '3 YR' in daily_performance.columns.values:
-        json_response['label_one'] = '3 YR'
-        json_response['label_two'] = '5 YR'
+    if '3 yr' or '3 year' in [i.lower() for i in daily_performance.columns.values.tolist()]:
+        json_response['label_one'] = '3 Year'
+        json_response['label_two'] = '5 Year'
     else:
-        json_response['label_one'] = '5 YR'
-        json_response['label_two'] = '10 YR'
+        json_response['label_one'] = '5 Year'
+        json_response['label_two'] = '10 Year'
     
     # Change column names
     daily_performance.columns = ['ticker', 'class', 'min_investment', 'gross_expense_ratio', 'net_expense_ratio',
