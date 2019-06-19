@@ -69,6 +69,8 @@ def get_performances_general(url):
 
     daily_performance = daily_performance.iloc[0:4]
     
+    daily_performance['daily_change_dollar'] = daily_performance['daily_change_dollar'].apply(lambda x: x if '(' not in x else '-'+x.replace('(','').replace(')',''))
+    
     classes = daily_performance['class'].unique()
 
     for share_class in classes:
